@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gyf.Dao.spendingDao">
+    <insert id="addKind">
+        insert into kind(kind)
+        values (#{name});
+    </insert>
+    <insert id="addSpending">
+        insert into spending(money, kind, year, month, day, hour, minute, second)
+        values (#{spend.money}, #{num}, #{spend.year}, #{spend.month}, #{spend.day}, #{spend.hour}, #{spend.minute}, #{spend.second})
+    </insert>
+    <update id="alertKind">
+        update kind
+        set kind = #{name2}
+        where kind = #{name1};
+    </update>
+    <delete id="deleteKind">
+        delete
+        from kind
+        where kind = #{name}
+    </delete>
+    <select id="selectKind" resultType="java.lang.String">
+        select kind
+        from kind
+    </select>
+
+
+    <select id="selectHotOfDay" resultType="java.util.ArrayList">
+        select k.kind, count(*) number
+        from spending s,
+             kind k
+        where s.kind = k.num
+          and s.year = #{year}
+          and s.month = #{month}
+          and s.day = #{day}
+        group by s.kind
+        order by number desc
+    </select>
+    <select id="selectHotOfMonth" resultType="java.util.List">
+        select k.kind, count(*) number
+        from spending s,
+             kind k
+        where s.kind = k.num
+          and s.year = #{year}
+          and s.month = #{month}
+        group by s.kind
+        order by number desc
+    </select>
+
+
+
+    <select id="selectOfMonth" resultType="com.gyf.Domain.spending">
+        select s.money, k.kind
+        from spending s,
+             kind k
+        where s.kind = k.num
+          and s.year = #{year}
+          and s.month = #{month};
+    </select>
+    <select id="selectOfAll" resultType="com.gyf.Domain.spending">
+        select s.money, k.kind
+        from spending s,
+             kind k
+        where s.kind = k.num;
+    </select>
+    <select id="selectGainOfMonth" resultType="java.lang.Integer">
+        select count(money)
+        from spending
+        where year = #{year}
+          and month = #{month};
+    </select>
+    <select id="selectGainOfDay" resultType="java.lang.Integer">
+        select count(money), count(*)
+        from spending
+        where year = #{year}
+          and month = #{month}
+          and year = #{year};
+    </select>
+    <select id="getNum" resultType="java.lang.Integer">
+        select num
+        from kind
+        where kind=#{name};
+    </select>
+
+
+</mapper>
