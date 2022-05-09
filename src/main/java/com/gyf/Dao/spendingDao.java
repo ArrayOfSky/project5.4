@@ -1,5 +1,6 @@
 package com.gyf.Dao;
 
+import com.gyf.Domain.HotComsumption;
 import com.gyf.Domain.spending;
 import org.apache.ibatis.annotations.Param;
 
@@ -19,9 +20,9 @@ public interface spendingDao {
     //查看有哪些消费类型
     List<String> selectKind();
     //查看今日各个清单的消费热度
-    List<List<String>> selectHotOfDay(@Param("year") int year, @Param("month") int month, @Param("day") int day);
+    List<HotComsumption> selectHotOfDay(@Param("year") int year, @Param("month") int month, @Param("day") int day);
     //查看今月消费热度
-    List<List<String>> selectHotOfMonth(@Param("year") int year,@Param("month") int month);
+    List<HotComsumption> selectHotOfMonth(@Param("year") int year,@Param("month") int month);
     //增加消费清单
     void addSpending(@Param("spend") spending spend,@Param("num") int num);
     //查看一个月的消费清单

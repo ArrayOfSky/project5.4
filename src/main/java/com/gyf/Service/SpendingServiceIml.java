@@ -1,11 +1,10 @@
 package com.gyf.Service;
 
 import com.gyf.Dao.spendingDao;
+import com.gyf.Domain.HotComsumption;
 import com.gyf.Domain.spending;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.List;
 @Service
 public class SpendingServiceIml implements spendingService {
@@ -34,14 +33,14 @@ public class SpendingServiceIml implements spendingService {
     }
 
     @Override
-    public List<List<String>> selectHotOfDay(int year, int month, int day) {
-        List<List<String>> array = Dao.selectHotOfDay(year,month,day);
+    public List<HotComsumption> selectHotOfDay(int year, int month, int day) {
+        List<HotComsumption> array = Dao.selectHotOfDay(year,month,day);
         return array;
     }
 
     @Override
-    public List<List<String>> selectHotOfMonth(int year, int month) {
-        List<List<String>> array=Dao.selectHotOfMonth(year,month);
+    public List<HotComsumption> selectHotOfMonth(int year, int month) {
+        List<HotComsumption> array=Dao.selectHotOfMonth(year,month);
         return array;
     }
 

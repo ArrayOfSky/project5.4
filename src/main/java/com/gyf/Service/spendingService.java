@@ -1,5 +1,6 @@
 package com.gyf.Service;
 
+import com.gyf.Domain.HotComsumption;
 import com.gyf.Domain.spending;
 
 import java.util.List;
@@ -14,9 +15,9 @@ public interface spendingService {
     //查看有哪些消费类型
     List<String> selectKind();
     //查看今日各个清单的消费热度
-    List<List<String>> selectHotOfDay(int year,int month,int day);
+    List<HotComsumption> selectHotOfDay(int year, int month, int day);
     //查看今月消费热度
-    List<List<String>> selectHotOfMonth(int year,int month);
+    List<HotComsumption> selectHotOfMonth(int year,int month);
     //增加消费清单
     void addSpending(spending spend);
     //查看一个月的消费清单

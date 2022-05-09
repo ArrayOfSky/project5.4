@@ -27,6 +27,20 @@ public class spending {
         this.second = second;
     }
 
+    @Override
+    public String toString() {
+        return "spending{" +
+                "money=" + money +
+                ", kind='" + kind + '\'' +
+                ", year=" + year +
+                ", month=" + month +
+                ", day=" + day +
+                ", hour=" + hour +
+                ", minute=" + minute +
+                ", second=" + second +
+                '}';
+    }
+
     public double getMoney() {
         return money;
     }

@@ -7,6 +7,14 @@ public class HotComsumption {
     public HotComsumption() {
     }
 
+    @Override
+    public String toString() {
+        return "HotComsumption{" +
+                "kind='" + kind + '\'' +
+                ", number=" + number +
+                '}';
+    }
+
     public HotComsumption(String kind, int number) {
         this.kind = kind;
         this.number = number;

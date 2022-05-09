@@ -25,7 +25,7 @@
     </select>
 
 
-    <select id="selectHotOfDay" resultType="java.util.ArrayList">
+    <select id="selectHotOfDay" resultType="com.gyf.Domain.HotComsumption">
         select k.kind, count(*) number
         from spending s,
              kind k
@@ -36,7 +36,7 @@
         group by s.kind
         order by number desc
     </select>
-    <select id="selectHotOfMonth" resultType="java.util.List">
+    <select id="selectHotOfMonth" resultType="com.gyf.Domain.HotComsumption">
         select k.kind, count(*) number
         from spending s,
              kind k
@@ -64,13 +64,13 @@
         where s.kind = k.num;
     </select>
     <select id="selectGainOfMonth" resultType="java.lang.Integer">
-        select count(money)
+        select sum(money),count(*)
         from spending
         where year = #{year}
           and month = #{month};
     </select>
     <select id="selectGainOfDay" resultType="java.lang.Integer">
-        select count(money), count(*)
+        select sum(money), count(*)
         from spending
         where year = #{year}
           and month = #{month}
